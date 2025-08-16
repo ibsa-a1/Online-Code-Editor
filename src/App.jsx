@@ -1,13 +1,6 @@
-import React from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-
+import { Box } from "@chakra-ui/react";
 function App() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-amber-300">Hello </h1>
-    </div>
-  );
+  return <Box>Hello World</Box>;
 }
 
 export default App;
