@@ -1,12 +1,12 @@
 import { createSystem, defaultConfig } from '@chakra-ui/react';
 
-const myCustomTheme = {
-  tokens: {
-    fonts: {
-        heading: { value: `'Figtree', sans-serif` },
-        body: { value: `'Figtree', sans-serif` },
-      },
+const myCustomConfig = {
+  theme: {
+    config: {
+      initialColorMode: 'dark',
+      useSystemColorMode: false,
+    },
   },
 };
 
-export const system = createSystem(defaultConfig, { theme: myCustomTheme });
+export const system = createSystem(defaultConfig, myCustomConfig);
