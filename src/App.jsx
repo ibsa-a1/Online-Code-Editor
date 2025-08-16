@@ -1,6 +1,7 @@
-import { Provider } from "@/components/ui/provider";
+import { Heading } from "@chakra-ui/react";
+
 function App() {
-  return <Provider>Hello Chakra</Provider>;
+  return <Heading>Hello</Heading>;
 }
 
 export default App;
