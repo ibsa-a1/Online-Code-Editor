@@ -3,6 +3,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { LANGUAGE_VERSIONS } from "../contstants.js";
 
 const languages = Object.entries(LANGUAGE_VERSIONS);
+// const ACTIVE_COLOR = "green.700";
 
 const LanguageSelector = ({ language, onSelect }) => {
   return (
@@ -14,28 +15,28 @@ const LanguageSelector = ({ language, onSelect }) => {
         <MenuButton as={Button}>{language}</MenuButton>
         <MenuList
           zIndex={1500}
-          bg="#23263b"
-          color="white"
+          // bg="#23263b"
+          // color="white"
           border="none"
           boxShadow="lg"
           borderRadius="md"
           opacity={1}
           portalProps={{}}
         >
-          {languages.map(([language, version]) => (
+          {languages.map(([lang, version]) => (
             <MenuItem
-              onClick={() => onSelect(language)}
-              key={language}
-              _hover={{ bg: "#363a5c", color: "white" }}
-              bg="#23263b"
-              color="white"
+              onClick={() => onSelect(lang)}
+              key={lang}
+              color={lang === language ? "#3B82F6" : "white"}
+              bg={lang === language ? "#34374b" : "#43476a"}
+              _hover={{ color: "#3B82F6", bg: "#34374b" }}
               minWidth="220px"
               px={6}
               py={4}
             >
-              {language}
+              {lang}
               &nbsp;
-              <Text as="span" color="gray.600" fontSize="sm">
+              <Text as="span" color="gray.400" fontSize="sm">
                 ({version})
               </Text>
             </MenuItem>
@@ -45,4 +46,5 @@ const LanguageSelector = ({ language, onSelect }) => {
     </Box>
   );
 };
+
 export default LanguageSelector;
