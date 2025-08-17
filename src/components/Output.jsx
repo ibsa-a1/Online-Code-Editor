@@ -1,5 +1,6 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
+import { executeCode } from "../api";
 
 const Output = ({ editorRef, language }) => {
   const runCode = async () => {
@@ -7,6 +8,9 @@ const Output = ({ editorRef, language }) => {
     if (!sourceCode) {
       return;
     }
+    try {
+      const {} = await executeCode(language, sourceCode);
+    } catch (error) {}
   };
 
   return (
@@ -15,6 +19,7 @@ const Output = ({ editorRef, language }) => {
         Output
       </Text>
       <Button
+        onClick={runCode}
         color="#16A34A"
         mb={4}
         borderColor="#16A34A"
