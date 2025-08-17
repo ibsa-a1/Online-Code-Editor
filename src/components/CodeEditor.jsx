@@ -3,6 +3,7 @@ import { Editor } from "@monaco-editor/react";
 import React, { useState, useRef } from "react";
 import LanguageSelector from "./LanguageSelector";
 import { CODE_SNIPPETS } from "../contstants";
+import Output from "./Output";
 
 const CodeEditor = () => {
   const editorRef = useRef();
@@ -35,6 +36,7 @@ const CodeEditor = () => {
           />
           ;
         </Box>
+        <Output />
       </HStack>
     </Box>
   );
