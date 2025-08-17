@@ -10,7 +10,7 @@ const LanguageSelector = ({ language, onSelect }) => {
       <Text mb={2} fontSize="lg">
         Language:
       </Text>
-      <Menu>
+      <Menu isLazy>
         <MenuButton as={Button}>{language}</MenuButton>
         <MenuList
           zIndex={1500}
