@@ -3,7 +3,6 @@ import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { LANGUAGE_VERSIONS } from "../contstants.js";
 
 const languages = Object.entries(LANGUAGE_VERSIONS);
-// const ACTIVE_COLOR = "green.700";
 
 const LanguageSelector = ({ language, onSelect }) => {
   return (
