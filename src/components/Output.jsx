@@ -1,9 +1,11 @@
 import { Box, Button, Text } from "@chakra-ui/react";
+import { Toaster, toaster } from "../components/ui/toaster";
 import { useState } from "react";
 import { executeCode } from "../api";
 
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) {
@@ -11,8 +13,19 @@ const Output = ({ editorRef, language }) => {
     }
     try {
       const { run: result } = await executeCode(language, sourceCode);
+      setIsLoading(true);
       setOutput(result.output);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+      toaster.create({
+        title: "An error occurred.",
+        description: error.message || "Unable to run code",
+        type: "error",
+        duration: 6000,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -22,6 +35,8 @@ const Output = ({ editorRef, language }) => {
       </Text>
       <Button
         onClick={runCode}
+        isLoading={isLoading}
+        loadingText="Running..."
         color="#16A34A"
         mb={4}
         borderColor="#16A34A"
@@ -39,6 +54,7 @@ const Output = ({ editorRef, language }) => {
       >
         {output ? output : "Click 'Run Code' to see output"}
       </Box>
+      <Toaster />
     </Box>
   );
 };
