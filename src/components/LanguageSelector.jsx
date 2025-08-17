@@ -12,9 +12,26 @@ const LanguageSelector = ({ language, onSelect }) => {
       </Text>
       <Menu>
         <MenuButton as={Button}>javascript</MenuButton>
-        <MenuList>
+        <MenuList
+          zIndex={1500}
+          bg="#23263b"
+          color="white"
+          border="none"
+          boxShadow="lg"
+          borderRadius="md"
+          opacity={1}
+          portalProps={{}}
+        >
           {languages.map(([language, version]) => (
-            <MenuItem key={language}>
+            <MenuItem
+              key={language}
+              _hover={{ bg: "#363a5c", color: "white" }}
+              bg="#23263b"
+              color="white"
+              minWidth="220px"
+              px={6}
+              py={4}
+            >
               {language}
               &nbsp;
               <Text as="span" color="gray.600" fontSize="sm">
