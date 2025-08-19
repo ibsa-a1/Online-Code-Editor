@@ -6,6 +6,7 @@ import { executeCode } from "../api";
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) {
@@ -15,6 +16,7 @@ const Output = ({ editorRef, language }) => {
     try {
       const { run: result } = await executeCode(language, sourceCode);
       setOutput(result.output);
+      result.stderr ? setIsError(true) : setIsError(false);
     } catch (error) {
       console.error(error);
       toaster.create({
@@ -22,6 +24,8 @@ const Output = ({ editorRef, language }) => {
         description: error.message || "Unable to run code",
         type: "error",
         duration: 6000,
+        closable: true,
+        position: "top-right",
       });
     } finally {
       setIsLoading(false);
@@ -46,9 +50,10 @@ const Output = ({ editorRef, language }) => {
       </Button>
       <Box
         height="75vh"
-        borderColor="#333"
+        borderColor={isError ? "#EF4444" : "#fff"}
         p={2}
         border="1px solid"
+        color={isError ? "#EF4444" : "#fff"}
         borderRadius={4}
       >
         {output ? output : "Click 'Run Code' to see output"}
