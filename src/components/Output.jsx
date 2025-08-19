@@ -11,9 +11,9 @@ const Output = ({ editorRef, language }) => {
     if (!sourceCode) {
       return;
     }
+    setIsLoading(true);
     try {
       const { run: result } = await executeCode(language, sourceCode);
-      setIsLoading(true);
       setOutput(result.output);
     } catch (error) {
       console.error(error);
