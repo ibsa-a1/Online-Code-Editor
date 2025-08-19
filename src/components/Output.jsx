@@ -50,6 +50,7 @@ const Output = ({ editorRef, language }) => {
       </Button>
       <Box
         height="75vh"
+        overflowY="auto"
         borderColor={isError ? "#EF4444" : "#fff"}
         p={2}
         border="1px solid"
