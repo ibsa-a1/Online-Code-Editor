@@ -36,14 +36,13 @@ const Output = ({ editorRef, language }) => {
       <Button
         onClick={runCode}
         isLoading={isLoading}
-        loadingText="Running..."
         color="#16A34A"
         mb={4}
         borderColor="#16A34A"
         border="1px solid"
         _hover={{ bg: "#1F2937" }}
       >
-        Run Code
+        {isLoading ? "Running..." : "Run Code"}
       </Button>
       <Box
         height="75vh"
